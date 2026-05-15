@@ -315,6 +315,7 @@
                                         @enderror
                                     </div>
                                 </div>
+                                
                                 {{-- <div class="row">
                                     <div class="col mb-4">
                                         <label for="status_pajak_id">Status Pajak <span
@@ -338,8 +339,8 @@
                                             </div>
                                         @enderror
                                     </div>
-                                </div> --}}
-                                {{-- <div class="row">
+                                </div>
+                                <div class="row">
                                     <div class="col mb-4">
                                         <label for="ktp">Nomor KTP</label>
                                         <input type="number" class="form-control @error('ktp') is-invalid @enderror"
@@ -528,8 +529,8 @@
                                             </div>
                                         @enderror
                                     </div>
-                                </div> --}}
-                                {{-- <div class="row">
+                                </div>
+                                <div class="row">
                                     <div class="col mb-4">
                                         <label for="izin_telat">Izin Telat</label>
                                         <input type="number" class="form-control @error('izin_telat') is-invalid @enderror" id="izin_telat" name="izin_telat" value="{{ old('izin_telat', $karyawan->izin_telat) }}">
@@ -548,8 +549,8 @@
                                         </div>
                                         @enderror
                                     </div>
-                                </div> --}}
-                                {{-- <div class="col mb-4">
+                                </div>
+                                <div class="col mb-4">
                                     <h3 style="color: blue">Penjumlahan Gaji</h3>
                                 </div>
                                 <div class="row">

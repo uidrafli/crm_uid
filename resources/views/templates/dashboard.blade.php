@@ -242,10 +242,6 @@
                                                     href="{{ url('/pegawai') }}"><i data-feather="users">
                                                     </i><span>Users</span></a>
                                             </li>
-
-                                            {{-- <li class="sidebar-list">
-                            <a class="sidebar-link sidebar-title link-nav" href="{{ url('/shift-pegawai') }}"><i data-feather="cloud-snow"> </i><span>Shift Pegawai</span></a>
-                        </li> --}}
                                         @endif
 
                                         @if (auth()->user()->hasRole('admin') || auth()->user()->hasRole('super_admin'))
@@ -262,129 +258,7 @@
                                                 </i><span>Division</span></a>
                                         </li>
 
-                                        {{-- @if (auth()->user()->hasRole('admin') || auth()->user()->hasRole('super_admin') || auth()->user()->hasRole('hrd') || auth()->user()->hasRole('general_manager'))
-                        <li class="sidebar-list">
-                            <a class="sidebar-link sidebar-title link-nav" href="{{ url('/kontrak') }}"><i data-feather="trending-up"> </i><span>Kontrak</span></a>
-                        </li>
-
-                        <li class="sidebar-list">
-                          <a class="sidebar-link sidebar-title link-nav" href="{{ url('/exit') }}"><i data-feather="user-minus"> </i><span>Pegawai Keluar</span></a>
-                        </li>
-
-                        <li class="sidebar-list">
-                          <a class="sidebar-link sidebar-title link-nav" href="{{ url('/shift') }}"><i data-feather="git-pull-request"> </i><span>Shift</span></a>
-                        </li>
-                      @endif
-
-                      @if (auth()->user()->hasRole('admin') || auth()->user()->hasRole('super_admin') || auth()->user()->hasRole('kepala_cabang') || auth()->user()->hasRole('hrd') || auth()->user()->hasRole('general_manager'))
-                        <li class="sidebar-list">
-                            <a class="sidebar-link sidebar-title link-nav" href="{{ url('/lokasi-kantor') }}"><i data-feather="map-pin"> </i><span>Lokasi</span></a>
-                        </li>
-                      @endif
-
-                      @if (auth()->user()->hasRole('admin') || auth()->user()->hasRole('super_admin') || auth()->user()->hasRole('general_manager') || auth()->user()->hasRole('finance'))
-                        <li class="sidebar-list">
-                            <a class="sidebar-link sidebar-title link-nav" href="{{ url('/rekap-data') }}"><i data-feather="credit-card"> </i><span>Rekap Data</span></a>
-                        </li>
-                      @endif
-
-                      @if (auth()->user()->hasRole('admin') || auth()->user()->hasRole('super_admin'))
-                        <li class="sidebar-list">
-                            <a class="sidebar-link sidebar-title link-nav" href="{{ url('/data-cuti') }}"><i data-feather="book"> </i><span>Data Cuti & RO</span></a>
-                        </li>
-                      @endif
-
-                      @if (auth()->user()->hasRole('admin') || auth()->user()->hasRole('super_admin'))
-                        <li class="sidebar-list">
-                            <a class="sidebar-link sidebar-title link-nav" href="{{ url('/data-ro') }}"><i data-feather="briefcase"> </i><span>Data Pengajuan RO</span></a>
-                        </li>
-                      @endif
-
-                      <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="javascript:void(0)"><i data-feather="clock"></i><span>Absensi</span></a>
-                          <ul class="sidebar-submenu">
-                          <li><a href="{{ url('/absen') }}">Absen</a></li>
-                          <li><a href="{{ url('/data-absen') }}">Data Absen</a></li>
-                          <li><a href="{{ url('/dinas-luar') }}">Absen Dinas Luar</a></li>
-                          <li><a href="{{ url('/data-dinas-luar') }}">Data Dinas Luar</a></li>
-                          </ul>
-                      </li>
-
-                      <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="javascript:void(0)"><i data-feather="film"></i><span>Overtime</span></a>
-                          <ul class="sidebar-submenu">
-                          <li><a href="{{ url('/lembur') }}">Overtime</a></li>
-                          <li><a href="{{ url('/data-lembur') }}">Data Overtime</a></li>
-                          </ul>
-                      </li>
-
-                      @if (auth()->user()->hasRole('admin') || auth()->user()->hasRole('super_admin') || auth()->user()->hasRole('hrd') || auth()->user()->hasRole('general_manager'))
-
-                        <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="javascript:void(0)"><i data-feather="map"></i><span>Patroli</span></a>
-                            <ul class="sidebar-submenu">
-                            <li><a href="{{ url('/patroli') }}">Patroli</a></li>
-                            <li><a href="{{ url('/data-patroli') }}">Data Patroli</a></li>
-                            </ul>
-                        </li>
-
-                        <li class="sidebar-list">
-                            <a class="sidebar-link sidebar-title link-nav" href="{{ url('/kunjungan') }}"><i data-feather="navigation"> </i><span>Kunjungan</span></a>
-                        </li>
-
-                        <li class="sidebar-list">
-                            <a class="sidebar-link sidebar-title link-nav" href="{{ url('/penugasan') }}"><i data-feather="award"> </i><span>Penugasan</span></a>
-                        </li>
-
-                        <li class="sidebar-list">
-                            <a class="sidebar-link sidebar-title link-nav" href="{{ url('/rapat') }}"><i data-feather="monitor"> </i><span>Rapat</span></a>
-                        </li>
-
-                        <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="javascript:void(0)"><i data-feather="wind"></i><span>Kinerja Pegawai</span></a>
-                            <ul class="sidebar-submenu">
-                              <li><a href="{{ url('/jenis-kinerja') }}">Jenis Kinerja</a></li>
-                              <li><a href="{{ url('/laporan-kinerja') }}">Laporan Kinerja</a></li>
-                              <li><a href="{{ url('/kinerja-pegawai') }}">Kinerja Pegawai</a></li>
-                            </ul>
-                        </li>
-
-                        <li class="sidebar-list">
-                            <a class="sidebar-link sidebar-title link-nav {{ Request::is('laporan-kerja*') ? 'active' : '' }}" href="{{ url('/laporan-kerja') }}"><i data-feather="message-square"> </i><span>Laporan Kerja</span></a>
-                        </li>
-                      @endif
-
-                      <li class="sidebar-list">
-                        <a class="sidebar-link sidebar-title link-nav" href="{{ url('/inventory') }}"><i data-feather="git-merge"> </i><span>Inventory</span></a>
-                      </li>
-
-                      @if (auth()->user()->hasRole('admin') || auth()->user()->hasRole('super_admin') || auth()->user()->hasRole('general_manager') || auth()->user()->hasRole('finance') || auth()->user()->hasRole('regional_manager'))
-                        <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="javascript:void(0)"><i data-feather="dollar-sign"></i><span>Keuangan</span></a>
-                            <ul class="sidebar-submenu">
-                            <li><a href="{{ url('/payroll') }}">Payroll</a></li>
-                            <li><a href="{{ url('/pajak') }}">Pajak</a></li>
-                            <li><a href="{{ url('/kasbon') }}">Kasbon</a></li>
-                            <li><a href="{{ url('/reimbursement') }}">Reimbursement</a></li>
-                            <li><a href="{{ url('/kategori') }}">Kategori Reimbursement</a></li>
-                            <li><a href="{{ url('/list-pengajuan-keuangan') }}">Pengajuan Keuangan</a></li>
-                            <li><a href="{{ url('/status-pajak') }}">Status Pajak</a></li>
-                            </ul>
-                        </li>
-
-                        <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="javascript:void(0)"><i data-feather="sunrise"></i><span>Target</span></a>
-                          <ul class="sidebar-submenu">
-                            <li><a href="{{ url('/target-kinerja') }}">Target Kinerja</a></li>
-                            <li><a href="{{ url('/detail-target-kinerja') }}">Detail Target</a></li>
-                          </ul>
-                        </li>
-                      @endif
-
-
-                      <li class="sidebar-list">
-                        <a class="sidebar-link sidebar-title link-nav {{ Request::is('dokumen*') ? 'active' : '' }}" href="{{ url('/dokumen') }}"><i data-feather="folder"> </i><span>Dokumen Pegawai</span></a>
-                      </li> --}}
-
                                         @if (auth()->user()->hasRole('admin'))
-                                            {{-- <li class="sidebar-list">
-                            <a class="sidebar-link sidebar-title link-nav {{ Request::is('berita*') ? 'active' : '' }}" href="{{ url('/berita') }}"><i data-feather="star"> </i><span>Berita & Informasi</span></a>
-                        </li> --}}
-
                                             <li class="sidebar-list">
                                                 <a class="sidebar-link sidebar-title link-nav {{ Request::is('settings*') ? 'active' : '' }}"
                                                     href="{{ url('/settings') }}"><i data-feather="settings">
@@ -463,7 +337,7 @@
     <!-- Buttons -->
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.4.1/css/buttons.dataTables.min.css">
 
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    {{-- <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script> --}}
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
 
     <!-- Buttons -->

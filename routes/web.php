@@ -89,6 +89,7 @@ Route::post('/data-center/update/{id}', [DataCenterController::class, 'update'])
 Route::get('/data-center/delete/{id}', [DataCenterController::class, 'delete'])->middleware('auth');
 Route::get('/data-center/active/{email}', [DataCenterController::class, 'active'])->middleware('auth');
 Route::get('/data-center/non-active/{email}', [DataCenterController::class, 'nonactive'])->middleware('auth');
+Route::get('/data-center/export', [DataCenterController::class, 'export'])->name('data_center.export');
 //CRM
 
 Route::get('/face-recognition', [karyawanController::class, 'faceRecognition'])->middleware('auth');

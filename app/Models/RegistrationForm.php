@@ -15,8 +15,8 @@ class RegistrationForm extends Model
 
     protected $fillable = [
         'user_id',
+        'users_role',
         'key_events',
-        'role_create',
         'title',
         'location',
         'start_date',

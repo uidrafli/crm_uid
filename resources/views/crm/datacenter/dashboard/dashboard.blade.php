@@ -80,8 +80,78 @@
                         <div class="card-body">
 
                             <div class="table-responsive">
-                                <h5>List of Data Center</h5>
+                                {{-- <h5>List of Data Center</h5> --}}
+                                <div class="col-md-12 mb-4">
+                                    <form method="GET" id="filters" action="{{ url('/data-center') }}">
+                                        <div class="inventory-grup row g-3">
+                                            <div class="col-lg-4">
+                                                <label for="name_events" class="form-label"
+                                                    style="color: #888888; font-weight: 700;">Name
+                                                    Events</label>
+                                                <input type="text" name="name_events" class="form-control"
+                                                    placeholder="Name Events" id="name_events">
+                                            </div>
+
+                                            <div class="col-lg-4">
+                                                <label for="sector" class="form-label"
+                                                    style="color: #888888; font-weight: 700;">Sector</label>
+                                                <select class="form-select form-control" name="sector" id="sector">
+                                                    <option value="" disabled selected>--Select Sector--</option>
+                                                    <option value="Government">Government</option>
+                                                    <option value="Business">Business</option>
+                                                    <option value="Civil Society">Civil Society</option>
+                                                </select>
+                                            </div>
+
+                                            <div class="col-lg-4">
+                                                <label for="field" class="form-label"
+                                                    style="color: #888888; font-weight: 700;">Field</label>
+                                                <select class="form-select form-control" name="field" id="field">
+                                                    <option value="" disabled selected>--Select Field--</option>
+                                                    <option value="Leadership">Leadership</option>
+                                                    <option value="Forestry">Forestry</option>
+                                                    <option value="Technology">Technology</option>
+                                                    <option value="Creative Economy & Industry">Creative Economy & Industry
+                                                    </option>
+                                                    <option value="Education, Capacity Building, and Youth Empowerment">
+                                                        Education, Capacity
+                                                        Building,
+                                                        and Youth Empowerment</option>
+                                                    <option value="Blended & Sustainable Finance">Blended & Sustainable
+                                                        Finance</option>
+                                                    <option value="Energy">Energy</option>
+                                                    <option value="Equality & Inclusion">Equality & Inclusion</option>
+                                                    <option value="Health, Wellbeing & Sports">Health, Wellbeing & Sports
+                                                    </option>
+                                                    <option value="Good Governance & Leadership">Good Governance &
+                                                        Leadership</option>
+                                                    <option value="MSME & Entrepreneurship">MSME & Entrepreneurship</option>
+                                                    <option value="Regenerative Landscape and Community Livelihood">
+                                                        Regenerative Landscape and
+                                                        Community
+                                                        Livelihood</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="tombol mt-3">
+                                            <button type="submit" id="submitBtn" class="btn btn-primary w-100"
+                                                style="height: 43px;">
+                                                <span id="btnText"><i class="fa fa-search" aria-hidden="true"></i>
+                                                    Filter</span>
+                                                <span id="btnSpinner" class="spinner-border d-none" role="status"
+                                                    aria-hidden="true"></span>
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
                                 <table id="tabel" class="table table-bordered nowrap display">
+                                    <a href="{{ route('data_center.export', request()->all()) }}" id="exportBtn"
+                                        class="btn btn-success">
+                                        <i class="fa fa-file-excel-o"></i>
+                                        <span>Export Excel</span>
+                                    </a>
+
                                     <thead>
                                         <tr>
                                             <th>No.</th>
@@ -169,13 +239,15 @@
                                                 <td>
                                                     @if ($result['status_users'] == 'Non Active')
                                                         <button class="btn btn-primary btn-active"
-                                                            data-email="{{ $result['email'] }}"><i class="fa fa-power-off"
-                                                                aria-hidden="true"></i> <b>Active</b>
+                                                            data-email="{{ $result['email'] }}"><i
+                                                                class="fa fa-power-off" aria-hidden="true"></i>
+                                                            <b>Active</b>
                                                         </button>
                                                     @else
                                                         <button class="btn btn-warning btn-nonactive"
-                                                            data-email="{{ $result['email'] }}"><i class="fa fa-power-off"
-                                                                aria-hidden="true"></i> <b>Non Active</b>
+                                                            data-email="{{ $result['email'] }}"><i
+                                                                class="fa fa-power-off" aria-hidden="true"></i> <b>Non
+                                                                Active</b>
                                                         </button>
                                                     @endif
                                                 </td>
@@ -243,8 +315,8 @@
                                                 </td>
                                                 <td>
                                                     <a href="{{ url('/data-center/update/' . $result->id_data_center) }}"
-                                                        class="btn btn-warning"><span id="btnText"><i class="fa fa-edit"
-                                                                aria-hidden="true"></i></span>
+                                                        class="btn btn-warning"><span id="btnText"><i
+                                                                class="fa fa-edit" aria-hidden="true"></i></span>
                                                     </a>
                                                     <button class="btn btn-danger btn-delete"
                                                         data-id="{{ $result->id_data_center }}"><i class="fa fa-trash"
@@ -359,13 +431,15 @@
                                                 <td>
                                                     @if ($result['status_users'] == 'Non Active')
                                                         <button class="btn btn-primary btn-active"
-                                                            data-email="{{ $result['email'] }}"><i class="fa fa-power-off"
-                                                                aria-hidden="true"></i> <b>Active</b>
+                                                            data-email="{{ $result['email'] }}"><i
+                                                                class="fa fa-power-off" aria-hidden="true"></i>
+                                                            <b>Active</b>
                                                         </button>
                                                     @else
                                                         <button class="btn btn-warning btn-nonactive"
-                                                            data-email="{{ $result['email'] }}"><i class="fa fa-power-off"
-                                                                aria-hidden="true"></i> <b>Non Active</b>
+                                                            data-email="{{ $result['email'] }}"><i
+                                                                class="fa fa-power-off" aria-hidden="true"></i> <b>Non
+                                                                Active</b>
                                                         </button>
                                                     @endif
                                                 </td>
@@ -393,7 +467,7 @@
         </script>
         <script>
             $('#tabel').DataTable({
-                dom: 'Bfrtip',
+                dom: 'frtip',
                 buttons: [{
                     extend: 'excelHtml5',
                     text: '<i class="fa fa-file-excel-o"></i> Export Excel',
@@ -561,6 +635,66 @@
                         });
                     });
                 });
+            });
+        </script>
+        <script>
+            document.getElementById('filters').addEventListener('submit', function() {
+                let btn = document.getElementById('submitBtn');
+                let text = document.getElementById('btnText');
+                let spinner = document.getElementById('btnSpinner');
+
+                // Sembunyikan teks, tampilkan spinner
+                text.classList.add('d-none');
+                spinner.classList.remove('d-none');
+
+                // Disable tombol agar tidak bisa diklik lagi
+                btn.disabled = true;
+            });
+        </script>
+        <script>
+            document.getElementById('exportBtn').addEventListener('click', async function(e) {
+                e.preventDefault();
+
+                let btn = this;
+                let url = btn.href;
+
+                // Simpan isi awal
+                let originalContent = btn.innerHTML;
+
+                // Disable + spinner
+                btn.style.pointerEvents = 'none';
+                btn.innerHTML = `<span class="spinner-border spinner-border-sm"></span> Exporting...`;
+
+                try {
+                    // Ambil file
+                    const response = await fetch(url);
+
+                    if (!response.ok) {
+                        throw new Error('Export gagal');
+                    }
+
+                    const blob = await response.blob();
+
+                    // Buat link download sementara
+                    const downloadUrl = window.URL.createObjectURL(blob);
+
+                    const a = document.createElement('a');
+                    a.href = downloadUrl;
+                    a.download = "data_center.xlsx";
+                    document.body.appendChild(a);
+                    a.click();
+
+                    a.remove();
+                    window.URL.revokeObjectURL(downloadUrl);
+
+                } catch (error) {
+                    console.log(error);
+                    alert('Export gagal');
+                }
+
+                // Kembalikan tombol normal
+                btn.style.pointerEvents = 'auto';
+                btn.innerHTML = originalContent;
             });
         </script>
         <script>

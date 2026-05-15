@@ -565,17 +565,19 @@ class authController extends Controller
                 return back();
             } else {
                 if (Auth::attempt($credentials)) {
-                    if ($user->hasRole('admin')) {
-                        $user->update([
-                            'is_admin' => 'admin'
-                        ]);
-                        return redirect()->intended('/dashboard');
-                    } else {
-                        $user->update([
-                            'is_admin' => 'user'
-                        ]);
-                        return redirect()->intended('/dashboard-flash');
-                    }
+                    // if ($user->hasRole('admin')) {
+                    //     $user->update([
+                    //         'is_admin' => 'admin'
+                    //     ]);
+                    //     return redirect()->intended('/dashboard');
+                    // } else {
+                    //     $user->update([
+                    //         'is_admin' => 'user'
+                    //     ]);
+                    //     return redirect()->intended('/dashboard-flash');
+                    // }
+
+                    return redirect()->intended('/dashboard');
 
                     $request->session()->regenerate();
                 } else {

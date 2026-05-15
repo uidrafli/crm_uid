@@ -14,6 +14,7 @@ class ResultRegistrationForm extends Model
     public $incrementing = true;
 
     protected $fillable = [
+        'users_role',
         'key_events',
         'name_events',
         'salutation',

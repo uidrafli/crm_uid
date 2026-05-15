@@ -212,6 +212,8 @@ session_start();
                         id="key_events">
                     <input type="hidden" name="name_events" class="form-control" value="{{ $data->title }}"
                         id="name_events">
+                    <input type="hidden" name="users_role" class="form-control" value="{{ $data->users_role }}"
+                        id="users_role">
                     @if ($data->salutation != null)
                         <div class="col-lg-6">
                             <label for="salutation" class="form-label"

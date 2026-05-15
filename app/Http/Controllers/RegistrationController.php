@@ -32,7 +32,13 @@ class RegistrationController extends Controller
     public function dashboard()
     {
         date_default_timezone_set('Asia/Makassar');
-        $data = RegistrationForm::latest()->get();
+        $role = Auth::user()->users_role;
+
+        if ($role == 'admin') {
+            $data = RegistrationForm::latest()->get();
+        } else {
+            $data = RegistrationForm::where('users_role', $role)->latest()->get();    
+        }
 
         return view('crm.registration.dashboard', [
             'title' => 'Registration Event Dashboard',
@@ -435,7 +441,7 @@ class RegistrationController extends Controller
 
         date_default_timezone_set('Asia/Makassar');
         $userId = Auth::user()->id;
-        $role = Auth::user()->is_admin;
+        $role = Auth::user()->users_role;
 
         $validated = $request->validate([
             'title' => 'nullable',
@@ -499,7 +505,7 @@ class RegistrationController extends Controller
 
         $validated['user_id'] = $userId;
         $validated['key_events'] = $custome_link . '_' . $validated['start_date'] . '_' . Str::random(10);
-        $validated['role_create'] = $role;
+        $validated['users_role'] = $role;
         $validated['status'] = 'Coming Soon';
 
         try {
@@ -788,6 +794,7 @@ class RegistrationController extends Controller
 
         $validated = $request->validate([
             'key_events' => 'required',
+            'users_role' => 'required',
             'name_events' => 'required',
             'salutation' => 'nullable',
             'fullname' => 'nullable',
