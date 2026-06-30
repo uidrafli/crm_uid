@@ -277,6 +277,11 @@
                                     $q->whereBetween('tanggal_mulai', [$tgl_mulai, $tgl_akhir])->orWhereBetween('tanggal_akhir', [$tgl_mulai, $tgl_akhir]);
                                 })
                                 ->get();
+
+                            $crm_events = App\Models\RegistrationForm::where(function ($q) use ($tgl_mulai, $tgl_akhir) {
+                                    $q->whereBetween('start_date', [$tgl_mulai, $tgl_akhir])->orWhereBetween('end_date', [$tgl_mulai, $tgl_akhir]);
+                                })
+                                ->get();
                         @endphp
                         @foreach ($data_sakit as $dc)
                             @php
@@ -319,6 +324,22 @@
                                 $dateEnd = \Carbon\Carbon::create($akhir[0], $akhir[1], $akhir[2])->addDay();
                             @endphp {
                                 title: 'RO: {{ $dc->User->name }}',
+                                start: new Date({{ $mulai[0] }}, {{ $mulai[1] - 1 }},
+                                    {{ $mulai[2] }}),
+                                end: new Date({{ $dateEnd->year }}, {{ $dateEnd->month - 1 }},
+                                    {{ $dateEnd->day }}),
+                                allDay: true
+                            },
+                        @endforeach
+                        @foreach ($crm_events as $dc)
+                            @php
+                                $mulai = explode('-', $dc->start_date);
+                                $akhir = explode('-', $dc->end_date);
+
+                                // Tambah 1 hari untuk end agar inclusive
+                                $dateEnd = \Carbon\Carbon::create($akhir[0], $akhir[1], $akhir[2])->addDay();
+                            @endphp {
+                                title: '{{ $dc->title }} | {{ $dc->start_time }} - {{ $dc->end_time }} WITA',
                                 start: new Date({{ $mulai[0] }}, {{ $mulai[1] - 1 }},
                                     {{ $mulai[2] }}),
                                 end: new Date({{ $dateEnd->year }}, {{ $dateEnd->month - 1 }},

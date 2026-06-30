@@ -47,7 +47,7 @@ use App\Http\Controllers\LaporanKinerjaController;
 use App\Http\Controllers\PengajuanKeuanganController;
 use App\Http\Controllers\PengajuanRoController;
 use App\Http\Controllers\RegistrationController;
-
+use App\Http\Controllers\SendBlast;
 
 /*
 |--------------------------------------------------------------------------
@@ -90,6 +90,10 @@ Route::get('/data-center/delete/{id}', [DataCenterController::class, 'delete'])-
 Route::get('/data-center/active/{email}', [DataCenterController::class, 'active'])->middleware('auth');
 Route::get('/data-center/non-active/{email}', [DataCenterController::class, 'nonactive'])->middleware('auth');
 Route::get('/data-center/export', [DataCenterController::class, 'export'])->name('data_center.export');
+Route::post('/data-center/import', [DataCenterController::class, 'import'])->name('data_center.import');
+
+Route::get('/send-blast', [SendBlast::class, 'dashboard'])->middleware('auth');
+Route::post('/send-blast-post', [SendBlast::class, 'send'])->middleware('auth');
 //CRM
 
 Route::get('/face-recognition', [karyawanController::class, 'faceRecognition'])->middleware('auth');

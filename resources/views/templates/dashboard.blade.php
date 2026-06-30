@@ -52,6 +52,7 @@
         integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
         crossorigin=""></script>
     <link rel="stylesheet" type="text/css" href="https://unpkg.com/trix@2.0.8/dist/trix.css">
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote-bs5.min.css" rel="stylesheet">
     <script type="text/javascript" src="https://unpkg.com/trix@2.0.8/dist/trix.umd.min.js"></script>
     <style>
         .btn-grey {
@@ -218,6 +219,12 @@
 
                                         <li class="sidebar-list">
                                             <a class="sidebar-link sidebar-title link-nav"
+                                                href="{{ url('/send-blast') }}"><i data-feather="send">
+                                                </i><span>Send Blast</span></a>
+                                        </li>
+
+                                        <li class="sidebar-list">
+                                            <a class="sidebar-link sidebar-title link-nav"
                                                 href="{{ url('/notifications') }}"><i data-feather="bell"></i>
                                                 <span>Notifications</span>
                                                 @if (auth()->user()->notifications()->whereNull('read_at')->count() > 0)
@@ -331,6 +338,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="{{ url('/push/bin/push.js') }}"></script>
     <script src="{{ url('/js/app.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote-bs5.min.js"></script>
     <!-- DataTables -->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
 

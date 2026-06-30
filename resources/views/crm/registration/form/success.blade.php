@@ -119,7 +119,7 @@ session_start();
         .img-2 {
             bottom: 0;
             left: 50%;
-            width: 300px;
+            width: {{ session('logo_size') ?? 300 }}px;
             transform: translateX(-50%);
         }
 
@@ -148,7 +148,7 @@ session_start();
             }
 
             .img-2 {
-                width: 200px;
+                width: {{ session('logo_size_mobile') ?? 200 }}px;
             }
 
             .img-3 {
@@ -182,33 +182,43 @@ session_start();
 <body>
     <div class="container">
         <div class="form-container">
-            <div class="container position-relative triangle-image-wrapper my-1">
-
-                <!-- Gambar 2: Tengah Bawah -->
-                <img src="{{ asset('assets/background/uid.png') }}" class="triangle-img img-2"
-                    alt="Image 2">
-            </div>
+            {{-- <div class="container position-relative triangle-image-wrapper my-1">
+                @if (session('logo'))
+                    <img src="{{ asset(session('logo')) }}" class="triangle-img img-2" alt="Image 2">
+                @else
+                    <img src="{{ asset('assets/background/uid.png') }}" class="triangle-img img-2" alt="Image 2">
+                @endif
+            </div> --}}
             <div class="text-center">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                        stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                            d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                    </svg> <br>
-                <label class="thk" style="font-size: 20px; color: rgb(47, 129, 206)">
-                    <b>
-                        Thank you for your registration
-                    </b>
-                </label>
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                </svg> <br>
+                @if (session('subject'))
+                    <label class="thk" style="font-size: 20px; color: rgb(47, 129, 206)">
+                        <b>{{ session('subject') }}</b>
+                    </label>
+                @else
+                    <label class="thk" style="font-size: 20px; color: rgb(47, 129, 206)">
+                        <b>Thank you for your registration</b>
+                    </label>
+                @endif
                 <div style="max-width: 700px; margin: 0 auto; margin-top: 10px;">
-                    <p>
-                        We will be sending a confirmation of your registration with further details closer to date.
-                        Meanwhile, should you have any questions, please do not hesitate to contact United In Diversity at email:
-                        <a href="mailto:contact@uid.or.id" style="text-decoration: none;">contact@uid.or.id</a>
-                    </p>
-                    <p>
-                        Yours sincerely, <br>
-                        United In Diversity
-                    </p>
+                    @if (session('description_notif'))
+                        {!! session('description_notif') !!}
+                    @else
+                        <p>
+                            We will be sending a confirmation of your registration with further details closer to date.
+                            Meanwhile, should you have any questions, please do not hesitate to contact United In
+                            Diversity at email:
+                            <a href="mailto:contact@uid.or.id" style="text-decoration: none;">contact@uid.or.id</a>
+                        </p>
+                        <p>
+                            Yours sincerely, <br>
+                            United In Diversity
+                        </p>
+                    @endif
                 </div>
             </div>
         </div>

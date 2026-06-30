@@ -73,7 +73,7 @@
                                         <td>{{ $result->title }}</td>
                                         <td>{{ \Carbon\Carbon::parse($result->start_date)->format('l, d F Y') }}</td>
                                         <td>
-                                            @if ($result->status == 'Success')
+                                            @if ($result->status == 'Completed')
                                                 <span class="badge bg-success">{{ $result->status ?? '-' }}</span>
                                             @else
                                                 <span class="badge bg-warning">{{ $result->status ?? '-' }}</span>
@@ -96,8 +96,7 @@
                                                         <div class="modal-header">
                                                             <h5 class="modal-title" style="font-weight: 700 !important;"
                                                                 id="photoModalLabel{{ $result->id_events_form }}">Link
-                                                                Event
-                                                                {{ $result->title }}
+                                                                Event & QR
                                                             </h5>
                                                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                                 aria-label="Close"></button>
